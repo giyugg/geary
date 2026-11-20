@@ -530,6 +530,16 @@ Test body.
     await page.locator('[data-building-id="con-canteen"]').click();
     await expect(inspector.locator('h2')).toHaveText('CON Canteen');
     await expect(inspector).toContainText('Tindahan ni Ka Ekek');
+    const buildingZoomedViewBox = await mapSvg.getAttribute('viewBox');
+    expect(buildingZoomedViewBox).not.toBe('0 0 1000 850');
+
+    // Clicking an open area on the map zooms in further around that point
+    await mapSvg.click({ position: { x: 200, y: 200 } });
+    const areaZoomedViewBox = await mapSvg.getAttribute('viewBox');
+    expect(areaZoomedViewBox).not.toBe(buildingZoomedViewBox);
+
+    await page.locator('button[aria-label="Reset map view"]').click();
+    await expect(mapSvg).toHaveAttribute('viewBox', '0 0 1000 850');
 
     await page.locator('button[aria-label="Zoom in map"]').click();
     const zoomedViewBox = await mapSvg.getAttribute('viewBox');

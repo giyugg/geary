@@ -293,7 +293,7 @@ The system shall maintain a single canonical registry defining the 7 permitted c
 
 #### `SRS-FUNC-MAP-02`: Interactive 2D SVG Map & Building Inspector
 - **Inputs:** Selected building ID, highlighted location ID, zoom scale (`1` to `3`), and SVG viewBox pan offsets.
-- **Processing Logic:** Highlight selected building footprint (`#8B1538` fill, `#D4A017` ring), smoothly zoom/pan viewBox onto building center when selected from search, and populate the side/bottom inspector panel with the building name and contained location names.
+- **Processing Logic:** Highlight selected building footprint (`#8B1538` fill, `#D4A017` ring), zoom/pan viewBox onto building center when selected from search or clicked on the map, zoom in around the clicked coordinate when clicking an open map area, and populate the side/bottom inspector panel with the building name and contained location names.
 - **Outputs:** Synchronized 2D vector map + building detail panel plus accessible keyboard building index.
 
 ---

@@ -173,12 +173,12 @@ Every product requirement in this PRD carries a strict release priority:
 | Req ID | Priority | Requirement Statement |
 | :--- | :--- | :--- |
 | **REQ-MAP-01** | **P0** | The system shall render a 2D interactive SVG schematic of BulSU Malolos Main Campus derived from OpenStreetMap building footprints, walkways, gates, and landmarks without external tile servers. |
-| **REQ-MAP-02** | **P0** | Clicking or selecting any campus building shall highlight it and open a minimal inspector listing the selected building name and the names of contained locations/offices. |
+| **REQ-MAP-02** | **P0** | Clicking or selecting any campus building shall highlight it, zoom/focus the map onto it, and open a minimal inspector listing the selected building name and the names of contained locations/offices. |
 | **REQ-MAP-03** | **P0** | A dedicated campus search bar shall search across both buildings and indoor locations (e.g., Registrar, Clinic, Cashier, OSFAS, Library, Canteen) and indicate which building contains each match; selecting a match highlights and centers that building on the map. |
 | **REQ-MAP-04** | **P1** | The map canvas shall support pan, zoom-in, zoom-out, and reset controls alongside keyboard-accessible building elements. |
 
 #### Acceptance Criteria
 - **AC-MAP-01 (`REQ-MAP-01`):** *Given* `/map`, *When* loaded, *Then* the 2D BulSU Malolos SVG schematic renders with zero external map tile requests and zero horizontal overflow on mobile or desktop.
-- **AC-MAP-02 (`REQ-MAP-02`):** *Given* any clickable building on the map, *When* clicked, *Then* the building highlights in BulSU Crimson (`#8B1538`) and the inspector displays its name and contained locations/offices.
+- **AC-MAP-02 (`REQ-MAP-02`):** *Given* any clickable building or area on the map, *When* clicked, *Then* clicking a building highlights it in BulSU Crimson (`#8B1538`), zooms/centers the viewport onto it, and updates the inspector, while clicking an open map area zooms in around the clicked coordinate.
 - **AC-MAP-03 (`REQ-MAP-03`):** *Given* a query such as `"Registrar"` or `"Scholarship"` typed into the campus map search bar, *When* matching locations appear, *Then* each result shows its parent building name (`Flores Hall`, `College of Law Annex / Near College of Law`, etc.), and selecting it focuses that building on the map and shows the matched location in the inspector.
 - **AC-MAP-04 (`REQ-MAP-04`):** *Given* pan/zoom buttons and reset control, *When* triggered by mouse or keyboard, *Then* the SVG viewport zooms cleanly and resets back to full campus view.
