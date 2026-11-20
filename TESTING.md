@@ -179,7 +179,7 @@ Maps the applicable **ISO/IEC 25010** product quality characteristics and sub-ch
 #### `TC-E2E-07`: Interactive 2D Campus Map (`/map`)
 - **ISO 25010 Characteristic:** Functional Suitability & Operability
 - **Linked Requirements:** `REQ-MAP-01`–`04`, `SRS-FUNC-MAP-01`–`02`
-- **Verification Procedure:** Visit `/map`, search `"Registrar"` in the map search input, verify a match appears showing `Flores Hall`, select it, verify `Flores Hall` becomes active on the SVG map and displays `Office of the University Registrar` in the inspector, click another building directly on the map (`Roxas Hall`), and exercise zoom/reset controls.
+- **Verification Procedure:** Visit `/map`, search `"Registrar"` in the map search input, verify a match appears showing `Flores Hall`, select it, verify `Flores Hall` becomes active on the SVG map and displays `Office of the University Registrar` in the inspector, click another building directly on the map (`Roxas Hall`) and verify the `viewBox` zooms/centers onto it, click an open map area to zoom in, and exercise zoom/reset controls.
 - **Pass/Fail Acceptance Criteria:** Location search maps matches to parent buildings, clicking a building or selecting a search result updates the inspector panel without runtime errors, and `/map` passes `TC-E2E-04` and `TC-A11Y-01` with `0` violations.
 
 ---

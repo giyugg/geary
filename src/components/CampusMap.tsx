@@ -161,7 +161,9 @@ export default function CampusMap() {
     setHighlightedLocationId(options?.locationId ?? null);
 
     if (options?.centerMap) {
-      updateViewBox(focusBuildingViewBox(building));
+      updateViewBox((prev) =>
+        focusBuildingViewBox(building, Math.min(prev.width, 480))
+      );
     }
   }
 
@@ -331,7 +333,28 @@ export default function CampusMap() {
       didGestureMoveRef.current = false;
       return;
     }
-    selectBuilding(buildingId, { locationId: null, centerMap: false });
+    selectBuilding(buildingId, { locationId: null, centerMap: true });
+  }
+
+  function handleSvgClick(event: React.MouseEvent<SVGSVGElement>) {
+    if (didGestureMoveRef.current) {
+      didGestureMoveRef.current = false;
+      return;
+    }
+    const svg = svgRef.current;
+    if (!svg) return;
+    const rect = svg.getBoundingClientRect();
+    if (rect.width === 0 || rect.height === 0) return;
+
+    const relX = (event.clientX - rect.left) / rect.width;
+    const relY = (event.clientY - rect.top) / rect.height;
+
+    updateViewBox((prev) =>
+      computeZoomViewBox(prev, 1.35, {
+        x: prev.x + relX * prev.width,
+        y: prev.y + relY * prev.height,
+      })
+    );
   }
 
   function handleResetMap() {
@@ -501,6 +524,7 @@ export default function CampusMap() {
               onPointerMove={handlePointerMove}
               onPointerUp={handlePointerEnd}
               onPointerCancel={handlePointerEnd}
+              onClick={handleSvgClick}
               onPointerLeave={(event) => {
                 if (
                   !gestureRef.current ||
@@ -616,6 +640,7 @@ export default function CampusMap() {
                     aria-current={isSelected ? 'true' : undefined}
                     onClick={(event) => {
                       event.preventDefault();
+                      event.stopPropagation();
                       handleBuildingClick(building.id);
                     }}
                     onKeyDown={(event) => {
