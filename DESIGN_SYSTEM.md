@@ -163,7 +163,7 @@ Geary's design philosophy—**low cognitive load, intuitive navigation, and a di
 ### 5.9 Interactive 2D Campus Map (`CampusMap.tsx`)
 - **Layout:** Responsive split container (`lg:grid-cols-[minmax(0,1fr)_360px]`) pairing the interactive SVG viewport on the left/top with a sticky building inspector panel on desktop (stacked cleanly below on mobile).
 - **Map Surface & Building States:** Campus grounds on `canvas-paper` (`#F8F9FA`) / `#F1F3F5`, footpaths in `#DEE2E6`, parks in `#E8F3EA`, resting clickable buildings in `white` with `border-strong` (`#CED4DA`) strokes, hovered buildings in `brand-crimson-wash` (`#FDF2F4`) with `#8B1538` stroke, and selected buildings filled `#8B1538` with `#D4A017` highlight outline (`>= 2px`).
-- **Controls:** Accessible zoom in (`+`), zoom out (`-`), reset view buttons overlaid cleanly on the map canvas, drag/scroll pan inside the bounded SVG canvas, a standalone search bar (no extra label, filter, or quick-jump ribbons), and a minimal right-hand inspector showing only the selected building's name and contained locations.
+- **Controls:** Accessible zoom in (`+`), zoom out (`-`), reset view buttons overlaid cleanly on the map canvas, drag/scroll pan inside the bounded SVG canvas, a standalone search bar (no extra label, filter, or quick-jump ribbons), and a minimal right-hand inspector showing only the selected building's name and contained locations with right-aligned high-visibility pill-shaped floor badges (`rounded-full border border-brand-gold bg-brand-gold-wash text-brand-gold-ink`).
 
 ---
 
